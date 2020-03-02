@@ -1,0 +1,26 @@
+import Cookies from 'js-cookie'
+
+// const TokenKey = 'Admin-Token'
+
+export function getToken(TokenKey) {
+    return Cookies.get(TokenKey)
+}
+
+export function setToken(TokenKey, token) {
+    return Cookies.set(TokenKey, token)
+}
+
+export function removeToken(TokenKey) {
+    return Cookies.remove(TokenKey)
+}
+
+export const setJSON = (TokenKey, json) => {
+    return Cookies.set(TokenKey, json)
+}
+export const getJSON = TokenKey => {
+    return Cookies.getJSON(TokenKey)
+}
+
+export const removeJSON = TokenKey => {
+    return Cookies.remove(TokenKey)
+}
