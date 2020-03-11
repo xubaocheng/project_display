@@ -35,19 +35,20 @@
                 <div class="right-main-container">
                     <div class="rmc-top-container">
                         <dv-border-box-3 class="rmctc-left-container">
-                            <Center-Cmp />
+                            <!-- <Center-Cmp /> -->
+                            <scrollBoard />
                         </dv-border-box-3>
 
                         <div class="rmctc-right-container">
                             <dv-border-box-3 class="rmctc-chart-1">
                                 <Right-Chart-1 />
                             </dv-border-box-3>
-
                             <dv-border-box-4
                                 class="rmctc-chart-2"
                                 :reverse="true"
                             >
-                                <Right-Chart-2 />
+                                <!-- <Right-Chart-2 /> -->
+                                <roseChart />
                             </dv-border-box-4>
                         </div>
                     </div>
@@ -66,12 +67,16 @@ import LeftChart1 from './LeftChart1'
 import LeftChart2 from './LeftChart2'
 import LeftChart3 from './LeftChart3'
 
-import CenterCmp from './CenterCmp'
+// import CenterCmp from './CenterCmp'
 
 import RightChart1 from './RightChart1'
-import RightChart2 from './RightChart2'
+// import RightChart2 from './RightChart2'
 
 import BottomCharts from './BottomCharts'
+
+//新增模块
+import roseChart from './RoseChart'
+import scrollBoard from './ScrollBoard'
 
 export default {
     name: 'DataView',
@@ -79,10 +84,12 @@ export default {
         LeftChart1,
         LeftChart2,
         LeftChart3,
-        CenterCmp,
+        // CenterCmp,
         RightChart1,
-        RightChart2,
-        BottomCharts
+        // RightChart2,
+        BottomCharts,
+        roseChart,
+        scrollBoard
     },
     data() {
         return {
