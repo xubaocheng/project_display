@@ -4,7 +4,7 @@ const resolve = dir => path.join(__dirname, dir)
 
 //项目基本路径  process.env.NODE_ENV 判断当前是开发环境还是要打包编译  production 是生产环境要开始编译
 const BASE_URL =
-    process.env.NODE_ENV === 'production' ? 'http://47.92.76.24/projectDisplayWeb/' : '/'
+    process.env.NODE_ENV === 'production' ? './' : '/'
 
 let TARGET = 'http://127.0.0.1:8080'
 // let TARGET = 'http://192.168.1.182:8080'

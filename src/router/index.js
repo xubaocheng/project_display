@@ -17,7 +17,7 @@ VueRouter.prototype.push = function push(location, onResolve, onReject) {
 
 const whiteList = ['/login', '/home', '/404', '/401'] // 不重定向白名单
 const router = new VueRouter({
-    mode: 'history',
+    mode: 'hash',
     routes: constantRouterMap
 })
 router.beforeEach((to, from, next) => {
