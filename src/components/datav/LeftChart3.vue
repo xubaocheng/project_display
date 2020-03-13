@@ -1,41 +1,35 @@
 <template>
-    <div class="left-chart-3">
-        <div class="lc3-header">实时展示3</div>
-        <div class="lc3-details">项目运行总数<span>245</span></div>
-        <dv-capsule-chart class="lc3-chart" :config="config" />
+    <div id="ranking-board">
+        <div class="ranking-board-title">模块访问统计</div>
+        <dv-scroll-ranking-board :config="config" />
     </div>
 </template>
 
 <script>
 export default {
-    name: 'LeftChart3',
+    name: 'RankingBoard',
     data() {
         return {
             config: {
                 data: [
                     {
-                        name: '展示类型1',
+                        name: '课程',
+                        value: 55
+                    },
+                    {
+                        name: '课件',
+                        value: 120
+                    },
+                    {
+                        name: '解读',
                         value: 78
                     },
                     {
-                        name: '展示类型2',
-                        value: 54
-                    },
-                    {
-                        name: '展示类型3',
-                        value: 123
-                    },
-                    {
-                        name: '展示类型4',
-                        value: 167
-                    },
-                    {
-                        name: '其他',
-                        value: 77
+                        name: '分享 ',
+                        value: 66
                     }
                 ],
-                colors: ['#00baff', '#3de7c9', '#fff', '#ffc530', '#469f4b'],
-                unit: '个'
+                rowNum: 4
             }
         }
     }
@@ -43,36 +37,26 @@ export default {
 </script>
 
 <style lang="less">
-.left-chart-3 {
+#ranking-board {
     width: 100%;
-    height: 33%;
+    height: 100%;
+    box-shadow: 0 0 3px blue;
     display: flex;
     flex-direction: column;
+    background-color: rgba(6, 30, 93, 0.5);
+    border-top: 2px solid rgba(1, 153, 209, 0.5);
+    box-sizing: border-box;
+    padding: 0px 30px;
 
-    .lc3-header {
-        height: 20px;
-        line-height: 20px;
-        font-size: 16px;
-        text-indent: 20px;
-        margin-top: 10px;
-    }
-
-    .lc3-details {
-        height: 40px;
-        font-size: 16px;
+    .ranking-board-title {
+        font-weight: bold;
+        height: 50px;
         display: flex;
         align-items: center;
-        text-indent: 20px;
-
-        span {
-            color: #096dd9;
-            font-weight: bold;
-            font-size: 35px;
-            margin-left: 20px;
-        }
+        font-size: 20px;
     }
 
-    .lc3-chart {
+    .dv-scroll-ranking-board {
         flex: 1;
     }
 }

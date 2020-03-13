@@ -1,7 +1,11 @@
 <template>
     <div class="left-chart-2">
-        <div class="lc2-header">实时展示2</div>
-        <div class="lc2-details">项目运行总数<span>245</span></div>
+        <div class="lc2-header">用户行为统计</div>
+        <div class="lc2-details">
+            提问处理情况
+            <span> <i></i>未处理 </span>
+            <span> <i></i>已处理 </span>
+        </div>
         <dv-charts class="lc2-chart" :option="option" />
         <dv-decoration-2 style="height:10px;" />
     </div>
@@ -17,11 +21,8 @@ export default {
                     {
                         type: 'pie',
                         data: [
-                            { name: '展示类型1', value: 93 },
-                            { name: '展示类型2', value: 32 },
-                            { name: '展示类型3', value: 65 },
-                            { name: '展示类型4', value: 44 },
-                            { name: '其他', value: 52 }
+                            { name: '未处理', value: 65 },
+                            { name: '已处理', value: 52 }
                         ],
                         radius: ['45%', '65%'],
                         insideLabel: {
@@ -37,7 +38,7 @@ export default {
                         }
                     }
                 ],
-                color: ['#00baff', '#3de7c9', '#fff', '#ffc530', '#469f4b']
+                color: ['#fff', '#469f4b']
             }
         }
     }
@@ -65,12 +66,25 @@ export default {
         display: flex;
         align-items: center;
         text-indent: 20px;
-
+        color: #096dd9;
         span {
-            color: #096dd9;
+            color: #fff;
             font-weight: bold;
-            font-size: 35px;
+            font-size: 16px;
             margin-left: 20px;
+            i {
+                display: inline-block;
+                width: 15px;
+                height: 15px;
+                background: #fff;
+                margin-right: 10px;
+            }
+        }
+        span:nth-child(2) {
+            color: #469f4b;
+            i {
+                background-color: #469f4b;
+            }
         }
     }
 

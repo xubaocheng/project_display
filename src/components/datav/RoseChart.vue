@@ -1,6 +1,6 @@
 <template>
     <div id="rose-chart">
-        <div class="rose-chart-title">项目</div>
+        <div class="rose-chart-title">分类课程浏览情况统计</div>
         <dv-charts :option="option" />
     </div>
 </template>
@@ -23,15 +23,14 @@ export default {
                         radius: '80%',
                         roseSort: false,
                         data: [
-                            { name: '类型一', value: randomExtend(40, 70) },
-                            { name: '类型二', value: randomExtend(20, 30) },
-                            { name: '类型三', value: randomExtend(10, 50) },
-                            { name: '类型四', value: randomExtend(5, 20) },
-                            { name: '类型五', value: randomExtend(40, 50) },
-                            { name: '类型六', value: randomExtend(20, 30) },
-                            { name: '类型七', value: randomExtend(5, 10) },
-                            { name: '类型八', value: randomExtend(20, 35) },
-                            { name: '类型九', value: randomExtend(5, 10) }
+                            { name: '地质类', value: randomExtend(40, 70) },
+                            { name: '儿童类', value: randomExtend(20, 30) },
+                            { name: '资源类', value: randomExtend(10, 50) },
+                            { name: '新闻类', value: randomExtend(5, 20) },
+                            { name: '理论类', value: randomExtend(40, 50) },
+                            { name: '政策类', value: randomExtend(20, 30) },
+                            { name: '法规类', value: randomExtend(5, 10) },
+                            { name: '其他类', value: randomExtend(20, 35) },
                         ],
                         insideLabel: {
                             show: false
@@ -50,15 +49,14 @@ export default {
                     }
                 ],
                 color: [
-                    '#da2f00',
-                    '#fa3600',
-                    '#ff4411',
-                    '#ff724c',
-                    '#541200',
-                    '#801b00',
-                    '#a02200',
-                    '#5d1400',
-                    '#b72700'
+                    'rgb(130,120,233)',
+                    'rgb(33,150,240)',
+                    'rgb(50,200,230)',
+                    'rgb(20,210,170)',
+                    'rgb(250,200,55)',
+                    'rgb(255,130,100)',
+                    'rgb(250,115,247)',
+                    'rgb(230,190,240)',
                 ]
             }
         },

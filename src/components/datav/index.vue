@@ -24,35 +24,29 @@
                     </dv-border-box-2>
                 </div>
             </div>
-
             <dv-border-box-1 class="main-container">
                 <dv-border-box-3 class="left-chart-container">
-                    <Left-Chart-1 />
+                    <digitalFlop />
                     <Left-Chart-2 />
-                    <Left-Chart-3 />
+                    <TopRightCmp />
                 </dv-border-box-3>
-
                 <div class="right-main-container">
                     <div class="rmc-top-container">
                         <dv-border-box-3 class="rmctc-left-container">
-                            <!-- <Center-Cmp /> -->
-                            <scrollBoard />
+                            <roseChart />
                         </dv-border-box-3>
-
                         <div class="rmctc-right-container">
                             <dv-border-box-3 class="rmctc-chart-1">
-                                <Right-Chart-1 />
+                                <Left-Chart-3 />
                             </dv-border-box-3>
                             <dv-border-box-4
                                 class="rmctc-chart-2"
                                 :reverse="true"
                             >
-                                <!-- <Right-Chart-2 /> -->
-                                <roseChart />
+                                <scrollBoard />
                             </dv-border-box-4>
                         </div>
                     </div>
-
                     <dv-border-box-4 class="rmc-bottom-container">
                         <Bottom-Charts />
                     </dv-border-box-4>
@@ -63,33 +57,28 @@
 </template>
 
 <script>
-import LeftChart1 from './LeftChart1'
 import LeftChart2 from './LeftChart2'
 import LeftChart3 from './LeftChart3'
 
-// import CenterCmp from './CenterCmp'
-
-import RightChart1 from './RightChart1'
-// import RightChart2 from './RightChart2'
-
+import TopRightCmp from './TopRightCmp'
 import BottomCharts from './BottomCharts'
 
 //新增模块
 import roseChart from './RoseChart'
 import scrollBoard from './ScrollBoard'
 
+import digitalFlop from './DigitalFlop'
+
 export default {
     name: 'DataView',
     components: {
-        LeftChart1,
         LeftChart2,
         LeftChart3,
-        // CenterCmp,
-        RightChart1,
-        // RightChart2,
+        TopRightCmp,
         BottomCharts,
         roseChart,
-        scrollBoard
+        scrollBoard,
+        digitalFlop
     },
     data() {
         return {
@@ -211,7 +200,7 @@ export default {
     }
 
     .left-chart-container {
-        width: 22%;
+        width: 30%;
         padding: 10px;
         box-sizing: border-box;
 
@@ -221,7 +210,7 @@ export default {
     }
 
     .right-main-container {
-        width: 78%;
+        width: 70%;
         padding-left: 5px;
         box-sizing: border-box;
     }
@@ -232,20 +221,22 @@ export default {
     }
 
     .rmctc-left-container {
-        width: 65%;
+        width: 55%;
     }
 
     .rmctc-right-container {
-        width: 35%;
+        width: 45%;
     }
 
     .rmc-bottom-container {
         height: 35%;
     }
 
-    .rmctc-chart-1,
+    .rmctc-chart-1 {
+        height: 40%;
+    }
     .rmctc-chart-2 {
-        height: 50%;
+        height: 60%;
     }
 }
 </style>

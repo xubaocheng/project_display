@@ -24,7 +24,7 @@ export default {
                     ['2019-07-10 09:25:00', '类型十', '3', 'xxxxxxx']
                 ],
                 index: true,
-                columnWidth: [50, 170, 300],
+                columnWidth: [50, 170, 100],
                 align: ['center'],
                 rowNum: 7,
                 headerBGC: '#1981f6',
@@ -41,7 +41,6 @@ export default {
 #scroll-board {
     width: 100%;
     box-sizing: border-box;
-    margin-left: 20px;
     height: 100%;
     overflow: hidden;
 }
