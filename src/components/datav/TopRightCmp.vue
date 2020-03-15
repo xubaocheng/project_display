@@ -101,7 +101,6 @@ export default {
     height: 50%;
     position: relative;
     box-sizing: border-box;
-
     .chart-name {
         position: absolute;
         right: 70px;

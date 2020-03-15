@@ -30,7 +30,7 @@ export default {
                             { name: '理论类', value: randomExtend(40, 50) },
                             { name: '政策类', value: randomExtend(20, 30) },
                             { name: '法规类', value: randomExtend(5, 10) },
-                            { name: '其他类', value: randomExtend(20, 35) },
+                            { name: '其他类', value: randomExtend(20, 35) }
                         ],
                         insideLabel: {
                             show: false
@@ -56,7 +56,7 @@ export default {
                     'rgb(250,200,55)',
                     'rgb(255,130,100)',
                     'rgb(250,115,247)',
-                    'rgb(230,190,240)',
+                    'rgb(230,190,240)'
                 ]
             }
         },
@@ -83,7 +83,7 @@ export default {
 #rose-chart {
     width: 100%;
     height: 100%;
-    background-color: rgba(6, 30, 93, 0.5);
+    // background-color: rgba(6, 30, 93, 0.5);
     border-top: 2px solid rgba(1, 153, 209, 0.5);
     box-sizing: border-box;
     .rose-chart-title {

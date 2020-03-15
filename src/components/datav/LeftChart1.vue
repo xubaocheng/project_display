@@ -1,7 +1,6 @@
 <template>
     <div class="left-chart-1">
-        <div class="lc1-header">实时展示1</div>
-        <div class="lc1-details">设备运行总数<span>830</span></div>
+        <div class="lc1-details">APP下载情况</div>
         <dv-capsule-chart class="lc1-chart" :config="config" />
         <dv-decoration-2 style="height:10px;" />
     </div>
@@ -15,27 +14,19 @@ export default {
             config: {
                 data: [
                     {
-                        name: '展示类型1',
+                        name: '本月下载',
                         value: 167
                     },
                     {
-                        name: '展示类型2',
-                        value: 67
+                        name: '本年下载',
+                        value: 267
                     },
                     {
-                        name: '展示类型3',
-                        value: 123
-                    },
-                    {
-                        name: '展示类型4',
-                        value: 55
-                    },
-                    {
-                        name: '其他',
-                        value: 98
+                        name: '总下载',
+                        value: 823
                     }
                 ],
-                colors: ['#00baff', '#3de7c9', '#fff', '#ffc530', '#469f4b'],
+                colors: ['#00baff', '#3de7c9', '#469f4b'],
                 unit: '个'
             }
         }
@@ -46,27 +37,18 @@ export default {
 <style lang="less">
 .left-chart-1 {
     width: 100%;
-    height: 37%;
+    height: 100%;
     display: flex;
     flex-grow: 0;
     flex-direction: column;
 
-    .lc1-header {
-        text-align: center;
+    .lc1-details {
+        font-weight: bold;
         height: 40px;
         display: flex;
-        justify-content: center;
         align-items: center;
-        font-size: 30px;
-        margin-bottom: 20px;
-    }
-
-    .lc1-details {
-        height: 50px;
-        font-size: 16px;
-        display: flex;
-        align-items: center;
-        text-indent: 20px;
+        font-size: 20px;
+        margin-bottom: 10px;
 
         span {
             color: #096dd9;

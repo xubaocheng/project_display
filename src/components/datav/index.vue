@@ -32,9 +32,15 @@
                 </dv-border-box-3>
                 <div class="right-main-container">
                     <div class="rmc-top-container">
-                        <dv-border-box-3 class="rmctc-left-container">
-                            <roseChart />
-                        </dv-border-box-3>
+                        <div class="rmctc-left-container">
+                            <dv-border-box-3 class="x-center-top">
+                                <roseChart />
+                            </dv-border-box-3>
+                            <dv-border-box-3 class="x-center-bottom">
+                                <LeftChart1 />
+                            </dv-border-box-3>
+                        </div>
+
                         <div class="rmctc-right-container">
                             <dv-border-box-3 class="rmctc-chart-1">
                                 <Left-Chart-3 />
@@ -47,9 +53,6 @@
                             </dv-border-box-4>
                         </div>
                     </div>
-                    <dv-border-box-4 class="rmc-bottom-container">
-                        <Bottom-Charts />
-                    </dv-border-box-4>
                 </div>
             </dv-border-box-1>
         </dv-full-screen-container>
@@ -61,7 +64,6 @@ import LeftChart2 from './LeftChart2'
 import LeftChart3 from './LeftChart3'
 
 import TopRightCmp from './TopRightCmp'
-import BottomCharts from './BottomCharts'
 
 //新增模块
 import roseChart from './RoseChart'
@@ -69,16 +71,18 @@ import scrollBoard from './ScrollBoard'
 
 import digitalFlop from './DigitalFlop'
 
+import LeftChart1 from './LeftChart1'
+
 export default {
     name: 'DataView',
     components: {
         LeftChart2,
         LeftChart3,
         TopRightCmp,
-        BottomCharts,
         roseChart,
         scrollBoard,
-        digitalFlop
+        digitalFlop,
+        LeftChart1
     },
     data() {
         return {
@@ -216,12 +220,18 @@ export default {
     }
 
     .rmc-top-container {
-        height: 65%;
+        height: 100%;
         display: flex;
     }
 
     .rmctc-left-container {
         width: 55%;
+        .x-center-top {
+            height: 70%;
+        }
+        .x-center-bottom {
+            height: 30%;
+        }
     }
 
     .rmctc-right-container {
@@ -233,10 +243,10 @@ export default {
     }
 
     .rmctc-chart-1 {
-        height: 40%;
+        height: 50%;
     }
     .rmctc-chart-2 {
-        height: 60%;
+        height: 50%;
     }
 }
 </style>

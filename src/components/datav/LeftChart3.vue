@@ -1,7 +1,7 @@
 <template>
     <div id="ranking-board">
         <div class="ranking-board-title">模块访问统计</div>
-        <dv-scroll-ranking-board :config="config" />
+        <dv-charts :option="option" />
     </div>
 </template>
 
@@ -10,26 +10,21 @@ export default {
     name: 'RankingBoard',
     data() {
         return {
-            config: {
-                data: [
+            option: {
+                series: [
                     {
-                        name: '课程',
-                        value: 55
-                    },
-                    {
-                        name: '课件',
-                        value: 120
-                    },
-                    {
-                        name: '解读',
-                        value: 78
-                    },
-                    {
-                        name: '分享 ',
-                        value: 66
+                        type: 'pie',
+                        data: [
+                            { name: '课程', value: 55 },
+                            { name: '课件', value: 120 },
+                            { name: '解读', value: 78 },
+                            { name: '分享', value: 66 }
+                        ],
+                        insideLabel: {
+                            show: true
+                        }
                     }
-                ],
-                rowNum: 4
+                ]
             }
         }
     }
@@ -43,8 +38,6 @@ export default {
     box-shadow: 0 0 3px blue;
     display: flex;
     flex-direction: column;
-    background-color: rgba(6, 30, 93, 0.5);
-    border-top: 2px solid rgba(1, 153, 209, 0.5);
     box-sizing: border-box;
     padding: 0px 30px;
 
@@ -54,10 +47,6 @@ export default {
         display: flex;
         align-items: center;
         font-size: 20px;
-    }
-
-    .dv-scroll-ranking-board {
-        flex: 1;
     }
 }
 </style>

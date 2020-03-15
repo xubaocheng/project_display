@@ -10,7 +10,7 @@
                 <div class="digital-flop">
                     <dv-digital-flop
                         :config="item.number"
-                        style="width:80px;height:50px;"
+                        style="height:50px;"
                     />
                     <!-- <div class="unit">{{ item.unit }}</div> -->
                 </div>

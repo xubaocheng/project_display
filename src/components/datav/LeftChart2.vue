@@ -49,6 +49,7 @@ export default {
 .left-chart-2 {
     width: 100%;
     height: 30%;
+    // background-color: rgba(6, 30, 93, 0.5);
     display: flex;
     flex-direction: column;
 
