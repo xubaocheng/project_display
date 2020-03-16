@@ -35,8 +35,8 @@
             <el-table-column type="selection" width="55"> </el-table-column>
             <el-table-column
                 prop="name"
-                label="数据类型名称"
-                width="120"
+                label="数据分类名称"
+                width="150"
                 sortable
             >
             </el-table-column>
@@ -225,7 +225,7 @@ export default {
         //获取详情
         handleItemDetail(index, row) {
             this.tabForm.id = row.id
-            let params = { labelid: this.tabForm.id }
+            let params = { dataClassifyId: this.tabForm.id }
             getDetail(params).then(res => {
                 if (res.code === '200') {
                     this.tabForm = res.data

@@ -36,7 +36,7 @@
             <el-table-column
                 prop="name"
                 label="数据类型名称"
-                width="120"
+                width="150"
                 sortable
             >
             </el-table-column>
@@ -225,7 +225,7 @@ export default {
         //获取详情
         handleItemDetail(index, row) {
             this.tabForm.id = row.id
-            let params = { labelid: this.tabForm.id }
+            let params = { dataTypeId: this.tabForm.id }
             getDetail(params).then(res => {
                 if (res.code === '200') {
                     this.tabForm = res.data
