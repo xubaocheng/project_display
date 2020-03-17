@@ -13,7 +13,7 @@
                         </el-tooltip>
                     </div>
                 </div>
-                <div class="mh-middle">可视化数据统计分析展示</div>
+                <div class="mh-middle">职联社服务平台数据统计分析展示</div>
                 <div class="mh-right">
                     <dv-border-box-2
                         style="width: 120px; height: 50px; line-height: 50px; text-align:center;margin-left:200px;"

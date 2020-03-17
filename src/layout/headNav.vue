@@ -41,7 +41,7 @@ export default {
     computed: {
         ...mapGetters(['sidebar', 'name', 'avatar']),
         headNavWidth() {
-            return document.body.clientWidth - this.sidebar.width
+            return document.body.clientWidth - this.sidebar.width - 15
         }
     },
     mounted() {},
