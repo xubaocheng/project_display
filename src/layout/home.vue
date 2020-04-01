@@ -54,7 +54,7 @@ export default {
         right: 0;
         top: 0;
         bottom: 0;
-        background: #f6f7fc;
+        background: #fff;
         .content {
             position: relative;
             margin-top: 60px;

@@ -161,7 +161,7 @@ export const asyncRouterMap = [
         redirect: '/content/form',
         meta: {
             title: '发布内容管理',
-            icon: 'el-icon-question'
+            icon: 'el-icon-document-add'
         },
         children: [
             {
@@ -181,10 +181,58 @@ export const asyncRouterMap = [
                     title: '表单',
                     icon: 'el-icon-question'
                 }
+            },
+            {
+                path: 'laboratoryList',
+                name: 'laboratoryList',
+                meta: {
+                    title: '实验室轮播图数据列表与表单',
+                    icon: 'el-icon-s-grid'
+                },
+                component: () => import('@/views/laboratory/Laboratory')
             }
         ]
     },
-
+    {
+        path: '/laboratory',
+        name: 'laboratory',
+        component: { render: h => h('router-view') },
+        meta: {
+            title: '实验室',
+            icon: 'el-icon-data-analysis'
+        },
+        children: [
+            {
+                path: 'rotationChart',
+                name: 'rotationChart',
+                meta: {
+                    title: '实验室轮播图',
+                    icon: 'el-icon-monitor'
+                },
+                component: () => import('@/views/laboratory/RotationChart')
+            }
+        ]
+    },
+    {
+        path: '/theory',
+        name: 'theory',
+        component: { render: h => h('router-view') },
+        meta: {
+            title: '理论成果',
+            icon: 'el-icon-data-analysis'
+        },
+        children: [
+            {
+                path: 'theoryAchievement',
+                name: 'theoryAchievement',
+                meta: {
+                    title: '理论成果首页面',
+                    icon: 'el-icon-monitor'
+                },
+                component: () => import('@/views/theory/Theory')
+            }
+        ]
+    },
     {
         path: '/test',
         component: Layout,
@@ -239,7 +287,7 @@ export const asyncRouterMap = [
         name: 'empty',
         meta: {
             title: '大屏展示统计',
-            icon: 'el-icon-question'
+            icon: 'el-icon-full-screen'
         },
         children: [
             {
@@ -258,7 +306,7 @@ export const asyncRouterMap = [
         component: { render: h => h('router-view') },
         meta: {
             title: '大屏阅读图书',
-            icon: 'el-icon-question'
+            icon: 'el-icon-reading'
         },
         children: [
             {
