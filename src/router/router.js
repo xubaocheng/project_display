@@ -181,15 +181,6 @@ export const asyncRouterMap = [
                     title: '表单',
                     icon: 'el-icon-question'
                 }
-            },
-            {
-                path: 'laboratoryList',
-                name: 'laboratoryList',
-                meta: {
-                    title: '实验室轮播图数据列表与表单',
-                    icon: 'el-icon-s-grid'
-                },
-                component: () => import('@/views/laboratory/Laboratory')
             }
         ]
     },
@@ -198,7 +189,7 @@ export const asyncRouterMap = [
         name: 'laboratory',
         component: { render: h => h('router-view') },
         meta: {
-            title: '实验室',
+            title: '实验室大屏展示',
             icon: 'el-icon-data-analysis'
         },
         children: [
@@ -230,6 +221,35 @@ export const asyncRouterMap = [
                     icon: 'el-icon-monitor'
                 },
                 component: () => import('@/views/theory/Theory')
+            }
+        ]
+    },
+    {
+        path: '/labClassifcation',
+        component: Layout,
+        name: 'labClassifcation',
+        meta: {
+            title: '实验室管理',
+            icon: 'el-icon-question'
+        },
+        children: [
+            {
+                path: 'labClassifca',
+                name: 'labClassifca',
+                component: () => import('@/views/labClassifca/LabClassifca'),
+                meta: {
+                    title: '分类表单与列表',
+                    icon: 'table'
+                }
+            },
+            {
+                path: 'laboratoryList',
+                name: 'laboratoryList',
+                meta: {
+                    title: '实验室轮播图数据列表与表单',
+                    icon: 'el-icon-s-grid'
+                },
+                component: () => import('@/views/laboratory/Laboratory')
             }
         ]
     },

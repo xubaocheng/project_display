@@ -2,13 +2,13 @@
 <template>
     <div class="rotationChart">
         <el-carousel
-            :interval="2000"
+            :interval="1000"
             arrow="always"
-            :autoplay="false"
+            :autoplay="true"
             :height="fullHeight"
         >
             <el-carousel-item
-                v-for="(item, index) in settings.img"
+                v-for="(item, index) in tabData"
                 :key="`item_${index}`"
             >
                 <div class="tab-warpper">
@@ -23,12 +23,11 @@
                     </div>
                     <div class="tab-warpper-box">
                         <h4>
-                            阿达王企鹅无群二请问去，王企鹅无群二，安抚王企鹅群翁奥所多撒按服务请求额为请问去问问齐天大圣单身公害
+                            {{ item.title }}
                         </h4>
-                        <img :src="item.url" alt="" />
+                        <img :src="item.img[0]" alt="" />
                         <p>
-                            阿达王企鹅无群二请问去，王企鹅无群二，安抚王企鹅群翁奥所多撒按服务请求额为请问去问问齐天大圣单身公害阿达王企鹅无群二请问去，王企鹅无群二，安抚王企鹅群翁奥所多撒按服务请求额为请问去问问齐天大圣单身公害阿达王企鹅无群二请问去，王企鹅无群二，安抚王企鹅群翁奥所多撒按服务请求额为请问去问问齐天大圣单身公害阿达王企鹅无群二请问去，王企鹅无群二，安抚王企鹅群翁奥所多撒按服务请求额为请问去问问齐天大圣单身公害
-                            wqeqw ewq eqweqw ewqewqewqewqeqwe ,;llpiuiiihh
+                            {{ item.abstracts }}
                         </p>
                     </div>
                     <div
@@ -50,10 +49,12 @@
                     <div class="wapper-box-content-main">
                         <div
                             class="wapper-box-content-main-item"
-                            v-for="item in 12"
-                            :key="item"
+                            v-for="(item, index) in tabData"
+                            :key="index"
+                            :class="{ active: index === currentIndex }"
+                            @click="handleClickItem(index)"
                         >
-                            <span>标题标题</span>
+                            <span>{{ item.title }}</span>
                             <i class="el-icon-question"></i>
                         </div>
                     </div>
@@ -64,6 +65,7 @@
 </template>
 
 <script>
+import { getTabList } from '../../api/laboratory'
 export default {
     name: 'RotationChart',
     components: {},
@@ -71,7 +73,10 @@ export default {
         return {
             n: 0,
             fullHeight: '',
+            currentIndex: 0,
             settings: {
+                title: '',
+                abstracts: '',
                 img: [
                     { url: require('../../assets/img/test/1.png') },
                     { url: require('../../assets/img/test/2.png') },
@@ -79,7 +84,8 @@ export default {
                     { url: require('../../assets/img/test/4.png') }
                 ]
             },
-            isShow: false
+            isShow: false,
+            tabData: []
         }
     },
     created() {
@@ -87,8 +93,28 @@ export default {
     },
     mounted() {
         this.getFullCreeen()
+        this.getTabData()
     },
     methods: {
+        getTabData() {
+            getTabList().then(res => {
+                console.log(res)
+                this.tabData = res.data.map(item => {
+                    item.img = item.img.split(',')
+                    return item
+                })
+            })
+        },
+        handleClickItem(index) {
+            this.currentIndex = index
+        },
+        settingsFn(itemData) {
+            this.settings = {
+                title: itemData.title,
+                abstracts: itemData.abstracts,
+                img: itemData.img
+            }
+        },
         warpperClose() {
             this.isShow = false
         },
@@ -173,7 +199,7 @@ export default {
             }
             p {
                 position: absolute;
-                bottom: 80px;
+                bottom: 111px;
                 left: 0;
                 width: 100%;
                 line-height: 40px;
@@ -257,6 +283,9 @@ export default {
                         -webkit-transform: translateY(-10px);
                         -o-transform: translateY(-10px);
                         box-shadow: 0 0 20px #000;
+                    }
+                    &.active {
+                        background: blue;
                     }
                 }
             }
