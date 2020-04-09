@@ -2,14 +2,14 @@
 <template>
     <div class="rotationChart">
         <el-carousel
-            :interval="1000"
+            :interval="interval"
             arrow="always"
             :autoplay="true"
             :height="fullHeight"
         >
             <el-carousel-item
-                v-for="(item, index) in tabData"
-                :key="`item_${index}`"
+                v-for="(item, index) in settings"
+                :key="`settings_item_${index}`"
             >
                 <div class="tab-warpper">
                     <div class="btn-fullscreen" @click="getFullCreeen">
@@ -25,7 +25,7 @@
                         <h4>
                             {{ item.title }}
                         </h4>
-                        <img :src="item.img[0]" alt="" />
+                        <img :src="item.img" alt="" />
                         <p>
                             {{ item.abstracts }}
                         </p>
@@ -52,9 +52,9 @@
                             v-for="(item, index) in tabData"
                             :key="index"
                             :class="{ active: index === currentIndex }"
-                            @click="handleClickItem(index)"
+                            @click="handleClickItem(index, item.id)"
                         >
-                            <span>{{ item.title }}</span>
+                            <span>{{ item.name }}</span>
                             <i class="el-icon-question"></i>
                         </div>
                     </div>
@@ -65,7 +65,7 @@
 </template>
 
 <script>
-import { getTabList } from '../../api/laboratory'
+import { getClassifcaList, getTabList } from '../../api/rotationChart'
 export default {
     name: 'RotationChart',
     components: {},
@@ -74,16 +74,14 @@ export default {
             n: 0,
             fullHeight: '',
             currentIndex: 0,
-            settings: {
-                title: '',
-                abstracts: '',
-                img: [
-                    { url: require('../../assets/img/test/1.png') },
-                    { url: require('../../assets/img/test/2.png') },
-                    { url: require('../../assets/img/test/3.png') },
-                    { url: require('../../assets/img/test/4.png') }
-                ]
-            },
+            settings: [
+                {
+                    title: '测试',
+                    abstracts: '测试',
+                    img: require('../../assets/img/test/1.png')
+                }
+            ],
+            interval: 2000,
             isShow: false,
             tabData: []
         }
@@ -99,14 +97,26 @@ export default {
         getTabData() {
             getTabList().then(res => {
                 console.log(res)
-                this.tabData = res.data.map(item => {
-                    item.img = item.img.split(',')
-                    return item
+                this.tabData = res.data
+                let params = {
+                    ltid: this.tabData[0].id
+                }
+                getClassifcaList(params).then(res => {
+                    console.log(res)
+                    this.settings = res.data
+                    this.interval = this.tabData[0].imgDate * 1000
                 })
             })
         },
-        handleClickItem(index) {
+        handleClickItem(index, id) {
             this.currentIndex = index
+            let params = {
+                ltid: id
+            }
+            getClassifcaList(params).then(res => {
+                this.settings = res.data
+                this.interval = this.tabData[index].imgDate * 1000
+            })
         },
         settingsFn(itemData) {
             this.settings = {

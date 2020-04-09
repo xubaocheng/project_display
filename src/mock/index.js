@@ -1,9 +1,10 @@
+// 使用 Mock
 import Mock from 'mockjs'
+import { getDetail } from './response/mockData'
 
-//测试mock数据
-import userAPI from './user'
-// user相关
-Mock.mock(/\/user\/login/, 'get', userAPI.login)
-Mock.mock(/\/user\/logout/, 'get', userAPI.logout)
+const baseUrl2mock =
+    process.env.NODE_ENV === 'production' ? process.env.BASE_URL : '/api'
+
+Mock.mock(`${baseUrl2mock}/getDetail`, getDetail) //推荐词条
 
 export default Mock

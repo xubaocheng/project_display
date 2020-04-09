@@ -58,13 +58,6 @@ export const del = params => {
 //     })
 // }
 
-//获取轮播图列表
-export const getTabList = () => {
-    return axios.request({
-        url: `${publicUrl}/laboratory/getLaboratoryListByRecommend1`,
-        method: 'post'
-    })
-}
 //获取分类列表
 export const getLabClassifca = () => {
     return axios.request({

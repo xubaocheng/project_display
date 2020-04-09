@@ -465,20 +465,20 @@ export default {
             })
                 .then(() => {
                     //filter 返回true表示保留该元素（通过测试），false则不保留
-                    if(this.labStatus === 'create'){
+                    if (this.labStatus === 'create') {
                         this.imgUrl = this.imgUrl.filter(item => {
                             if (file.uid !== item.uid) {
                                 return true
                             }
                         })
-                    }else{
+                    } else {
                         this.imgUrl = this.imgUrl.filter(item => {
                             if (file.url !== item.url) {
                                 return true
                             }
                         })
                     }
-                    
+
                     console.log(this.imgUrl)
                     this.fileList = this.fileList.filter(item => {
                         if (file.uid !== item.uid) {
@@ -530,7 +530,7 @@ export default {
                             this.imgUrl = []
                             this.ruleForm.img = []
                             this.labDialog = false
-                            console.log(this.imgUrl,this.fileList)
+                            console.log(this.imgUrl, this.fileList)
                         } else {
                             this.$message.error(res.message)
                         }

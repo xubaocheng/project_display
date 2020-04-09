@@ -132,7 +132,7 @@ export default {
             tabDialog: false, //控制弹框是否显示
             tabForm: {
                 id: '',
-                imgDate: 2,
+                imgDate: 1,
                 name: '' //分类名称
             },
             tabFormRules: {
@@ -211,10 +211,7 @@ export default {
         submitBtnFn(formName) {
             this.$refs[formName].validate(valid => {
                 if (valid) {
-                    let params = {
-                        id: this.tabForm.id,
-                        name: this.tabForm.name //分类名名
-                    }
+                    let params = this.tabForm
                     add(params).then(res => {
                         if (res.code === '200') {
                             this.tabDialog = false
@@ -250,7 +247,6 @@ export default {
         },
         //编辑修改提交
         editBtnFn(formName) {
-            this.tabForm.password = ''
             let params = this.tabForm
             add(params).then(res => {
                 if (res.code === '200') {
