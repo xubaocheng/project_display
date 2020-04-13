@@ -190,7 +190,7 @@ export const asyncRouterMap = [
         component: { render: h => h('router-view') },
         meta: {
             title: '实验室大屏展示',
-            icon: 'el-icon-data-analysis'
+            icon: 'el-icon-monitor'
         },
         children: [
             {
@@ -230,7 +230,7 @@ export const asyncRouterMap = [
         name: 'labClassifcation',
         meta: {
             title: '实验室管理',
-            icon: 'el-icon-question'
+            icon: 'el-icon-film'
         },
         children: [
             {

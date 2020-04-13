@@ -3,9 +3,11 @@
     <div class="rotationChart">
         <el-carousel
             :interval="interval"
-            arrow="always"
+            arrow="never"
             :autoplay="true"
             :height="fullHeight"
+            trigger="click"
+            :loop="true"
         >
             <el-carousel-item
                 v-for="(item, index) in settings"
@@ -61,6 +63,7 @@
                 </div>
             </div>
         </transition>
+        <div class="mouse-position"></div>
     </div>
 </template>
 
@@ -116,6 +119,7 @@ export default {
             getClassifcaList(params).then(res => {
                 this.settings = res.data
                 this.interval = this.tabData[index].imgDate * 1000
+                this.warpperClose()
             })
         },
         settingsFn(itemData) {
@@ -344,6 +348,14 @@ export default {
             -o-transform: perspective(900) rotateX(90deg);
             opacity: 0;
         }
+    }
+    .mouse-position {
+        width: 80%;
+        height: 200px;
+        position: absolute;
+        top: 0;
+        right: 200px;
+        z-index: 11;
     }
 }
 </style>

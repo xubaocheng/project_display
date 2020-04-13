@@ -9,11 +9,19 @@
                         :content="n % 2 !== 0 ? `取消全屏` : `全屏`"
                         placement="bottom"
                     >
-                        <i class="el-icon-rank" style="font-size:26px; color:#fff;"></i>
+                        <i
+                            class="el-icon-rank"
+                            style="font-size:26px; color:#fff;"
+                        ></i>
                     </el-tooltip>
                 </div>
-                <div class="theory-warpper-top-title">
+                <div class="theory-warpper-top-container">
+                    <div class="theory-warpper-top-container-title">
+                        《出版"有数"》理论成果展示
+                    </div>
+                    <div class="theory-warpper-top-container-cumrp">
 
+                    </div>
                 </div>
             </div>
             <div class="theory-warpper-bottom">
@@ -166,10 +174,10 @@ export default {
     padding-top: 20px;
     box-sizing: border-box;
     background: blue;
-    &-warpper{
+    &-warpper {
         width: 100%;
         height: 100%;
-        &-top{
+        &-top {
             width: 100%;
             height: 100px;
             background: rgb(114, 115, 130);
@@ -182,13 +190,21 @@ export default {
                 z-index: 1;
                 cursor: pointer;
             }
-            &-title{
+            &-container {
                 width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                &-title{
+                    font-size: 30px;
+                    color: #fff;
+                }
             }
         }
-        &-bottom{
+        &-bottom {
             width: 100%;
-            height: calc( 100% - 120px );
+            height: calc(100% - 120px);
             display: flex;
             justify-content: space-around;
             .book {
@@ -204,7 +220,7 @@ export default {
                 flex-direction: column;
                 &-box {
                     width: 100%;
-                    height: calc( 100% - 180px );
+                    height: calc(100% - 180px);
                     padding: 20px;
                     box-sizing: border-box;
                     border: 1px solid #ccc;
@@ -297,6 +313,5 @@ export default {
             }
         }
     }
-    
 }
 </style>

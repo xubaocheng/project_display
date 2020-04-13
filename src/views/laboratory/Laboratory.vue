@@ -501,7 +501,7 @@ export default {
         },
         //上传文件成功后的响应
         handleChangeAdd(file, fileList) {
-            console.log(this.fileList)
+            console.log(file,fileList)
             let param = new FormData()
             param.append('fileName', file.raw)
             uploadFile(param).then(res => {
@@ -515,10 +515,14 @@ export default {
         },
         //提交
         submitForm(formName) {
-            console.log(this.ruleForm)
+            console.log(this.ruleForm.img)
             this.$refs[formName].validate(valid => {
                 if (valid) {
                     let params = this.ruleForm
+                    params.img = params.img.map( item => {
+                        let str = item.replace('http://127.0.0.1:8080','')
+                        return str
+                    })
                     params.img = params.img.join(',')
                     add(params).then(res => {
                         if (res.code === '200') {
@@ -530,7 +534,6 @@ export default {
                             this.imgUrl = []
                             this.ruleForm.img = []
                             this.labDialog = false
-                            console.log(this.imgUrl, this.fileList)
                         } else {
                             this.$message.error(res.message)
                         }
