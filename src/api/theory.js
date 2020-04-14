@@ -2,9 +2,9 @@ import axios from './index'
 import publicUrl from './publicUrl'
 
 //获取tab详情
-export const getDetail = params => {
+export const getTabDetail = params => {
     return axios.request({
-        url: `${publicUrl}/getDetail`,
+        url: `${publicUrl}/getTabDetail`,
         method: 'post',
         dataType: 'json',
         data: params

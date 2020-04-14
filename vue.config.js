@@ -1,4 +1,5 @@
 const path = require('path')
+const webpack = require('webpack')
 
 const resolve = dir => path.join(__dirname, dir)
 
@@ -44,5 +45,14 @@ module.exports = {
             preProcessor: 'less',
             patterns: [path.resolve(__dirname, './src/assets/css/common.less')]
         }
+    },
+    configureWebpack: {
+        plugins: [
+            new webpack.ProvidePlugin({
+                $: 'jquery',
+                jQuery: 'jquery',
+                'windows.jQuery': 'jquery'
+            })
+        ]
     }
 }

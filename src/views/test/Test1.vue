@@ -1,12 +1,17 @@
 <!-- 測試1 -->
 <template>
-    <div class="test1">測試1</div>
+    <div class="test1">
+        <Book />
+    </div>
 </template>
 
 <script>
+import Book from '../../components/book/book'
 export default {
     name: 'test1',
-    components: {},
+    components: {
+        Book
+    },
     data() {
         return {}
     },
@@ -14,4 +19,9 @@ export default {
     methods: {}
 }
 </script>
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+.test1 {
+    width: 100%;
+    height: 500px;
+}
+</style>

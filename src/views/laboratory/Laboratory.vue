@@ -501,7 +501,7 @@ export default {
         },
         //上传文件成功后的响应
         handleChangeAdd(file, fileList) {
-            console.log(file,fileList)
+            console.log(file, fileList)
             let param = new FormData()
             param.append('fileName', file.raw)
             uploadFile(param).then(res => {
@@ -519,8 +519,8 @@ export default {
             this.$refs[formName].validate(valid => {
                 if (valid) {
                     let params = this.ruleForm
-                    params.img = params.img.map( item => {
-                        let str = item.replace('http://127.0.0.1:8080','')
+                    params.img = params.img.map(item => {
+                        let str = item.replace('http://127.0.0.1:8080', '')
                         return str
                     })
                     params.img = params.img.join(',')

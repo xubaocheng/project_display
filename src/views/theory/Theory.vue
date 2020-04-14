@@ -19,21 +19,41 @@
                     <div class="theory-warpper-top-container-title">
                         《出版"有数"》理论成果展示
                     </div>
-                    <div class="theory-warpper-top-container-cumrp">
-
-                    </div>
+                    <div class="theory-warpper-top-container-cumrp"></div>
                 </div>
             </div>
             <div class="theory-warpper-bottom">
-                <div class="book"></div>
+                <div class="book">
+                    <!-- <Book /> -->
+                </div>
                 <div class="tab">
                     <div class="tab-box">
                         <div class="tab-box-content">
-                            <div class="tab-box-content-top">
-                                111
+                            <div
+                                class="tab-box-content-bottom"
+                                v-show="top > 0"
+                            >
+                                <i class="active" @click="scrollHightFn(0)"></i>
+                            </div>
+                            <div
+                                class="tab-box-content-top"
+                                ref="elHight"
+                                :style="
+                                    top > 0 ? { height: '91%' } : styleObject
+                                "
+                            >
+                                <div
+                                    class="tab-box-content-top-warpper"
+                                    :style="{ top: scrollHeight }"
+                                >
+                                    <p>{{ contentItem.content }}</p>
+                                    <img :src="contentItem.img" alt="" />
+                                    <p>{{ contentItem.content }}</p>
+                                    <p>{{ contentItem.content }}</p>
+                                </div>
                             </div>
                             <div class="tab-box-content-bottom">
-                                <i></i>
+                                <i @click="scrollHightFn(1)"></i>
                             </div>
                         </div>
                     </div>
@@ -68,10 +88,13 @@
 </template>
 
 <script>
-import { getDetail } from '@/api/theory'
+import { getTabDetail } from '@/api/theory'
+// import Book from '../../components/book/book'
 export default {
     name: 'theorys',
-    components: {},
+    components: {
+        // Book
+    },
     data() {
         return {
             n: 0,
@@ -99,13 +122,46 @@ export default {
                     color: 'rgb(240,50,80)'
                 }
             ],
-            currentIndex: 0
+            currentIndex: 0,
+            contentItem: {},
+            top: 0,
+            index: 0
         }
     },
     mounted() {
+        this.getFullCreeen()
         this.getDetailFn()
     },
+    computed: {
+        scrollHeight: function() {
+            return -this.top + 'px'
+        },
+        styleObject() {
+            return { height: '95%' }
+        }
+    },
     methods: {
+        //滚动
+        scrollHightFn(state) {
+            if (state) {
+                if (
+                    this.$refs.elHight.firstChild.offsetHeight - this.top >
+                    this.$refs.elHight.offsetHeight
+                ) {
+                    this.index++
+                } else {
+                    this.$message('内容加载完毕')
+                }
+            } else {
+                if (this.top > 0) {
+                    this.index--
+                } else {
+                    this.$message('内容已加载')
+                }
+            }
+            this.top = this.$refs.elHight.offsetHeight * this.index
+        },
+        //切换tab 三角
         handlerItem(index) {
             this.currentIndex = index
         },
@@ -114,8 +170,9 @@ export default {
             let params = {
                 id: 1
             }
-            getDetail(params).then(res => {
+            getTabDetail(params).then(res => {
                 console.log(res)
+                this.contentItem = res.data
             })
         },
         warpperClose() {
@@ -172,6 +229,7 @@ export default {
     width: 100%;
     height: 100%;
     padding-top: 20px;
+    padding-bottom: 10px;
     box-sizing: border-box;
     background: blue;
     &-warpper {
@@ -196,7 +254,7 @@ export default {
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                &-title{
+                &-title {
                     font-size: 30px;
                     color: #fff;
                 }
@@ -221,7 +279,7 @@ export default {
                 &-box {
                     width: 100%;
                     height: calc(100% - 180px);
-                    padding: 20px;
+                    padding: 0 20px;
                     box-sizing: border-box;
                     border: 1px solid #ccc;
                     background: #fff;
@@ -230,11 +288,30 @@ export default {
                         height: 100%;
                         &-top {
                             width: 100%;
-                            height: 95%;
+                            height: 91%;
+                            position: relative;
+                            overflow: hidden;
+                            &-warpper {
+                                width: 100%;
+                                position: absolute;
+                                // top: 0;
+                                left: 0;
+                                transition: 2s all ease;
+                                p {
+                                    font-size: 16px;
+                                    text-indent: 2em;
+                                    line-height: 26px;
+                                }
+                                img {
+                                    width: 100%;
+                                    height: 50%;
+                                    display: inline-block;
+                                }
+                            }
                         }
                         &-bottom {
                             width: 100%;
-                            height: 5%;
+                            height: 4%;
                             border-top: 3px solid #000;
                             display: flex;
                             justify-content: center;
@@ -242,9 +319,12 @@ export default {
                                 width: 30px;
                                 height: 30px;
                                 cursor: pointer;
-                                background-image: url('../../assets/img/more.png');
+                                background-image: url('../../assets/img/jump_to_bottom.png');
                                 background-size: 100%;
                                 animation: container 1.5s linear infinite;
+                                &.active {
+                                    background-image: url('../../assets/img/jump_to_top.png');
+                                }
                             }
                             @keyframes container {
                                 0% {

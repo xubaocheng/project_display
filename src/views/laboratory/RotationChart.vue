@@ -63,7 +63,9 @@
                 </div>
             </div>
         </transition>
-        <div class="mouse-position"></div>
+        <div class="mouse-position">
+            <span class="goHomeBtn" @click="goBack">综合管理台</span>
+        </div>
     </div>
 </template>
 
@@ -81,7 +83,7 @@ export default {
                 {
                     title: '测试',
                     abstracts: '测试',
-                    img: require('../../assets/img/test/1.png')
+                    img: require('../../assets/img/0.png')
                 }
             ],
             interval: 2000,
@@ -97,6 +99,11 @@ export default {
         this.getTabData()
     },
     methods: {
+        goBack() {
+            this.$router.push({
+                path: '/'
+            })
+        },
         getTabData() {
             getTabList().then(res => {
                 console.log(res)
@@ -356,6 +363,16 @@ export default {
         top: 0;
         right: 200px;
         z-index: 11;
+        .goHomeBtn {
+            width: 100%;
+            height: 100%;
+            line-height: 100px;
+            display: inline-block;
+            text-align: center;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+        }
     }
 }
 </style>
