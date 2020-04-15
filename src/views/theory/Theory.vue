@@ -3,7 +3,7 @@
     <div class="theory">
         <div class="theory-warpper">
             <div class="theory-warpper-top">
-                <div class="btn-fullscreen" @click="getFullCreeen">
+                <!-- <div class="btn-fullscreen" @click="getFullCreeen">
                     <el-tooltip
                         effect="dark"
                         :content="n % 2 !== 0 ? `取消全屏` : `全屏`"
@@ -14,8 +14,13 @@
                             style="font-size:26px; color:#fff;"
                         ></i>
                     </el-tooltip>
-                </div>
+                </div> -->
                 <div class="theory-warpper-top-container">
+                    <div class="btn-goback">
+                        <span class="goHomeBtn" @click="goBack"
+                            >综合管理台</span
+                        >
+                    </div>
                     <div class="theory-warpper-top-container-title">
                         《出版"有数"》理论成果展示
                     </div>
@@ -24,7 +29,7 @@
             </div>
             <div class="theory-warpper-bottom">
                 <div class="book">
-                    <!-- <Book /> -->
+                    <Book />
                 </div>
                 <div class="tab">
                     <div class="tab-box">
@@ -89,17 +94,15 @@
 
 <script>
 import { getTabDetail } from '@/api/theory'
-// import Book from '../../components/book/book'
+import Book from '_c/book/book2.vue'
 export default {
     name: 'theorys',
     components: {
-        // Book
+        Book
     },
     data() {
         return {
-            n: 0,
-            fullHeight: '',
-            isShow: false,
+            // n: 0,
             tabList: [
                 {
                     name: '成果介绍',
@@ -129,7 +132,7 @@ export default {
         }
     },
     mounted() {
-        this.getFullCreeen()
+        // this.getFullCreeen()
         this.getDetailFn()
     },
     computed: {
@@ -141,6 +144,11 @@ export default {
         }
     },
     methods: {
+        goBack() {
+            this.$router.push({
+                path: '/'
+            })
+        },
         //滚动
         scrollHightFn(state) {
             if (state) {
@@ -174,53 +182,47 @@ export default {
                 console.log(res)
                 this.contentItem = res.data
             })
-        },
-        warpperClose() {
-            this.isShow = false
-        },
-        toggerWarpper() {
-            this.isShow = true
-        },
-        getFullCreeen() {
-            this.n++
-            this.n % 2 == 0
-                ? this.outFullCreeen(document)
-                : this.inFullCreeen(document.documentElement)
-        },
-        inFullCreeen(element) {
-            let el = element
-            let rfs =
-                el.requestFullScreen ||
-                el.webkitRequestFullScreen ||
-                el.mozRequestFullScreen ||
-                el.msRequestFullScreen
-            if (typeof rfs != 'undefined' && rfs) {
-                rfs.call(el)
-            } else if (typeof window.ActiveXObject != 'undefined') {
-                // eslint-disable-next-line no-undef
-                let wscript = new ActiveXObject('WScript.Shell')
-                if (wscript != null) {
-                    wscript.SendKeys('{F11}')
-                }
-            }
-        },
-        outFullCreeen(element) {
-            let el = element
-            let cfs =
-                el.cancelFullScreen ||
-                el.webkitCancelFullScreen ||
-                el.mozCancelFullScreen ||
-                el.exitFullScreen
-            if (typeof cfs != 'undefined' && cfs) {
-                cfs.call(el)
-            } else if (typeof window.ActiveXObject != 'undefined') {
-                // eslint-disable-next-line no-undef
-                let wscript = new ActiveXObject('WScript.Shell')
-                if (wscript != null) {
-                    wscript.SendKeys('{F11}')
-                }
-            }
         }
+        // getFullCreeen() {
+        //     this.n++
+        //     this.n % 2 == 0
+        //         ? this.outFullCreeen(document)
+        //         : this.inFullCreeen(document.documentElement)
+        // },
+        // inFullCreeen(element) {
+        //     let el = element
+        //     let rfs =
+        //         el.requestFullScreen ||
+        //         el.webkitRequestFullScreen ||
+        //         el.mozRequestFullScreen ||
+        //         el.msRequestFullScreen
+        //     if (typeof rfs != 'undefined' && rfs) {
+        //         rfs.call(el)
+        //     } else if (typeof window.ActiveXObject != 'undefined') {
+        //         // eslint-disable-next-line no-undef
+        //         let wscript = new ActiveXObject('WScript.Shell')
+        //         if (wscript != null) {
+        //             wscript.SendKeys('{F11}')
+        //         }
+        //     }
+        // },
+        // outFullCreeen(element) {
+        //     let el = element
+        //     let cfs =
+        //         el.cancelFullScreen ||
+        //         el.webkitCancelFullScreen ||
+        //         el.mozCancelFullScreen ||
+        //         el.exitFullScreen
+        //     if (typeof cfs != 'undefined' && cfs) {
+        //         cfs.call(el)
+        //     } else if (typeof window.ActiveXObject != 'undefined') {
+        //         // eslint-disable-next-line no-undef
+        //         let wscript = new ActiveXObject('WScript.Shell')
+        //         if (wscript != null) {
+        //             wscript.SendKeys('{F11}')
+        //         }
+        //     }
+        // }
     }
 }
 </script>
@@ -240,23 +242,36 @@ export default {
             height: 100px;
             background: rgb(114, 115, 130);
             margin-bottom: 20px;
-            position: relative;
-            .btn-fullscreen {
-                position: absolute;
-                top: 40px;
-                left: 20px;
-                z-index: 1;
-                cursor: pointer;
-            }
+            // position: relative;
+            // .btn-fullscreen {
+            //     position: absolute;
+            //     top: 40px;
+            //     left: 20px;
+            //     z-index: 1;
+            //     cursor: pointer;
+            // }
             &-container {
                 width: 100%;
                 height: 100%;
                 display: flex;
-                justify-content: center;
+                justify-content: space-around;
                 align-items: center;
                 &-title {
                     font-size: 30px;
                     color: #fff;
+                }
+                .btn-goback {
+                    width: 100px;
+                    height: 50px;
+                    border: 1px solid #ccc;
+                    .goHomeBtn {
+                        width: 100%;
+                        line-height: 50px;
+                        text-align: center;
+                        display: inline-block;
+                        cursor: pointer;
+                        color: #fff;
+                    }
                 }
             }
         }

@@ -46,13 +46,19 @@ module.exports = {
             patterns: [path.resolve(__dirname, './src/assets/css/common.less')]
         }
     },
-    configureWebpack: {
-        plugins: [
+    configureWebpack: config => {
+        // config.resolve.alias['@'] = resolve('src');
+        // config.resolve.alias['@c'] = resolve('src/components');
+        // config.resolve.alias['@data'] = resolve('example/data');
+        // config.resolve.alias['@less'] = resolve('example/less');
+
+        config.plugins.push(
             new webpack.ProvidePlugin({
                 $: 'jquery',
+                jquery: 'jquery',
                 jQuery: 'jquery',
-                'windows.jQuery': 'jquery'
+                'window.jQuery': 'jquery'
             })
-        ]
+        )
     }
 }

@@ -41,8 +41,29 @@ export default {
         }
     },
     created() {},
-    mounted() {},
-    watch: {}
+    mounted() {
+        this.inFullCreeen(document.documentElement)
+    },
+    watch: {},
+    methods: {
+        inFullCreeen(element) {
+            let el = element
+            let rfs =
+                el.requestFullScreen ||
+                el.webkitRequestFullScreen ||
+                el.mozRequestFullScreen ||
+                el.msRequestFullScreen
+            if (typeof rfs != 'undefined' && rfs) {
+                rfs.call(el)
+            } else if (typeof window.ActiveXObject != 'undefined') {
+                // eslint-disable-next-line no-undef
+                let wscript = new ActiveXObject('WScript.Shell')
+                if (wscript != null) {
+                    wscript.SendKeys('{F11}')
+                }
+            }
+        }
+    }
 }
 </script>
 <style scoped lang="less">

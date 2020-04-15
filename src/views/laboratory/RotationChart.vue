@@ -14,7 +14,7 @@
                 :key="`settings_item_${index}`"
             >
                 <div class="tab-warpper">
-                    <div class="btn-fullscreen" @click="getFullCreeen">
+                    <!-- <div class="btn-fullscreen" @click="getFullCreeen">
                         <el-tooltip
                             effect="dark"
                             :content="n % 2 !== 0 ? `取消全屏` : `全屏`"
@@ -22,7 +22,7 @@
                         >
                             <i class="el-icon-rank" style="font-size:26px;"></i>
                         </el-tooltip>
-                    </div>
+                    </div> -->
                     <div class="tab-warpper-box">
                         <h4>
                             {{ item.title }}
@@ -76,7 +76,7 @@ export default {
     components: {},
     data() {
         return {
-            n: 0,
+            // n: 0,
             fullHeight: '',
             currentIndex: 0,
             settings: [
@@ -95,7 +95,7 @@ export default {
         this.fullHeight = window.screen.height + 'px'
     },
     mounted() {
-        this.getFullCreeen()
+        // this.getFullCreeen()
         this.getTabData()
     },
     methods: {
@@ -141,47 +141,47 @@ export default {
         },
         toggerWarpper() {
             this.isShow = true
-        },
-        getFullCreeen() {
-            this.n++
-            this.n % 2 == 0
-                ? this.outFullCreeen(document)
-                : this.inFullCreeen(document.documentElement)
-        },
-        inFullCreeen(element) {
-            let el = element
-            let rfs =
-                el.requestFullScreen ||
-                el.webkitRequestFullScreen ||
-                el.mozRequestFullScreen ||
-                el.msRequestFullScreen
-            if (typeof rfs != 'undefined' && rfs) {
-                rfs.call(el)
-            } else if (typeof window.ActiveXObject != 'undefined') {
-                // eslint-disable-next-line no-undef
-                let wscript = new ActiveXObject('WScript.Shell')
-                if (wscript != null) {
-                    wscript.SendKeys('{F11}')
-                }
-            }
-        },
-        outFullCreeen(element) {
-            let el = element
-            let cfs =
-                el.cancelFullScreen ||
-                el.webkitCancelFullScreen ||
-                el.mozCancelFullScreen ||
-                el.exitFullScreen
-            if (typeof cfs != 'undefined' && cfs) {
-                cfs.call(el)
-            } else if (typeof window.ActiveXObject != 'undefined') {
-                // eslint-disable-next-line no-undef
-                let wscript = new ActiveXObject('WScript.Shell')
-                if (wscript != null) {
-                    wscript.SendKeys('{F11}')
-                }
-            }
         }
+        // getFullCreeen() {
+        //     this.n++
+        //     this.n % 2 == 0
+        //         ? this.outFullCreeen(document)
+        //         : this.inFullCreeen(document.documentElement)
+        // },
+        // inFullCreeen(element) {
+        //     let el = element
+        //     let rfs =
+        //         el.requestFullScreen ||
+        //         el.webkitRequestFullScreen ||
+        //         el.mozRequestFullScreen ||
+        //         el.msRequestFullScreen
+        //     if (typeof rfs != 'undefined' && rfs) {
+        //         rfs.call(el)
+        //     } else if (typeof window.ActiveXObject != 'undefined') {
+        //         // eslint-disable-next-line no-undef
+        //         let wscript = new ActiveXObject('WScript.Shell')
+        //         if (wscript != null) {
+        //             wscript.SendKeys('{F11}')
+        //         }
+        //     }
+        // },
+        // outFullCreeen(element) {
+        //     let el = element
+        //     let cfs =
+        //         el.cancelFullScreen ||
+        //         el.webkitCancelFullScreen ||
+        //         el.mozCancelFullScreen ||
+        //         el.exitFullScreen
+        //     if (typeof cfs != 'undefined' && cfs) {
+        //         cfs.call(el)
+        //     } else if (typeof window.ActiveXObject != 'undefined') {
+        //         // eslint-disable-next-line no-undef
+        //         let wscript = new ActiveXObject('WScript.Shell')
+        //         if (wscript != null) {
+        //             wscript.SendKeys('{F11}')
+        //         }
+        //     }
+        // }
     }
 }
 </script>
@@ -230,13 +230,13 @@ export default {
                 background: rgba(0, 0, 0, 0.5);
             }
         }
-        .btn-fullscreen {
-            position: absolute;
-            top: 40px;
-            left: 20px;
-            z-index: 1;
-            cursor: pointer;
-        }
+        // .btn-fullscreen {
+        //     position: absolute;
+        //     top: 40px;
+        //     left: 20px;
+        //     z-index: 1;
+        //     cursor: pointer;
+        // }
         .togger-btn {
             position: absolute;
             top: 40px;
@@ -368,7 +368,7 @@ export default {
             height: 100%;
             line-height: 100px;
             display: inline-block;
-            text-align: center;
+            // text-align: center;
             cursor: pointer;
             font-size: 18px;
             font-weight: bold;
