@@ -95,7 +95,10 @@ http {
 			add_header 'Access-Control-Allow-Origin' '*';
 			proxy_pass http://127.0.0.1:8080/;
 		}
-        
+        location /images {
+            alias  D:/fileUpload;
+            autoindex on;
+        }
         # proxy the PHP scripts to Apache listening on 127.0.0.1:80
         #
         #location ~ \.php$ {

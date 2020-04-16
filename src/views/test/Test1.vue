@@ -1,17 +1,14 @@
 <!-- 測試1 -->
 <template>
     <div class="test1">
-        <Book />
+        ceshi
     </div>
 </template>
 
 <script>
-import Book from '../../components/book/book'
 export default {
     name: 'test1',
-    components: {
-        Book
-    },
+    components: {},
     data() {
         return {}
     },

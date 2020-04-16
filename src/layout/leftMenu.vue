@@ -83,7 +83,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import logoImg from '@/assets/img/logo.png'
+// import logoImg from '@/assets/img/logo.png'
 export default {
     name: 'left-menu',
     components: {},
@@ -92,7 +92,7 @@ export default {
     },
     data() {
         return {
-            logo: logoImg
+            logo: require('@/assets/img/logo.png')
         }
     },
     mounted() {},

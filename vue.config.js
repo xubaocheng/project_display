@@ -12,7 +12,6 @@ let TARGET = 'http://127.0.0.1:8080/'
 module.exports = {
     lintOnSave: true,
     publicPath: BASE_URL,
-
     chainWebpack: config => {
         config.resolve.alias
             .set('@', resolve('src'))
