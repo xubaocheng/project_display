@@ -437,7 +437,7 @@ export default {
                             url: item
                         }
                     })
-                    console.log(this.ruleForm.img)
+                    console.log(this.ruleForm.img, this.fileList, this.imgUrl)
                 }
             })
         },
@@ -571,8 +571,10 @@ export default {
                             this.ruleForm[k] = ''
                         }
                     }
-                    console.log(this.ruleForm)
+                    // console.log(this.ruleForm,this.fileList,this.imgUrl)
                     this.fileList = []
+                    this.imgUrl = []
+                    // console.log(this.ruleForm,this.fileList,this.imgUrl)
                     done()
                 })
                 .catch(() => {})
