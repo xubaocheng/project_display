@@ -34,18 +34,19 @@
                 v-loading="listLoading"
                 @selection-change="selsChange"
                 style="width: 100%;"
+                :cell-class-name="changeCellStyle"
             >
                 <el-table-column type="selection" width="55"> </el-table-column>
                 <el-table-column
                     prop="title"
                     label="标题"
-                    width="150"
+                    width="250"
                     sortable
                 ></el-table-column>
                 <el-table-column
                     prop="abstracts"
                     label="摘要"
-                    min-width="200"
+                    min-width="400"
                     sortable
                 ></el-table-column>
                 <el-table-column
@@ -163,10 +164,15 @@
                         :auto-upload="false"
                         :file-list="fileList"
                         :on-change="handleChangeAdd"
+                        :limit="1"
                         ref="upload"
                     >
                         <i slot="default" class="el-icon-plus"></i>
-                        <div slot="file" slot-scope="{ file }">
+                        <div
+                            slot="file"
+                            slot-scope="{ file }"
+                            style="width；100%;height:100%;"
+                        >
                             <img
                                 class="el-upload-list__item-thumbnail"
                                 :src="file.url"
@@ -223,6 +229,7 @@ import { getDate } from '@/lib/tools' // 设置浏览器头部标题
 export default {
     name: 'Laboratory',
     components: {},
+    computed: {},
     data() {
         return {
             // 添加用户参数
@@ -323,6 +330,9 @@ export default {
         }
     },
     methods: {
+        changeCellStyle: function({ row, rowIndex }) {
+            return 'tableClassStyle'
+        },
         //获取分类数据
         getLabClassifcaList() {
             getLabClassifca().then(res => {
@@ -451,10 +461,6 @@ export default {
             this.pageIndex = val
             this.getLabList()
         },
-        //轮播时间
-        handleChange(value) {
-            console.log(value)
-        },
         //删除上传文件
         handleRemove(file) {
             console.log(file)
@@ -501,7 +507,7 @@ export default {
         },
         //上传文件成功后的响应
         handleChangeAdd(file, fileList) {
-            console.log(file, fileList)
+            // console.log(file, fileList)
             let param = new FormData()
             param.append('fileName', file.raw)
             uploadFile(param).then(res => {
@@ -511,18 +517,22 @@ export default {
                     url: res
                 })
             })
+            console.log(this.imgUrl)
             this.fileList = fileList
         },
         //提交
         submitForm(formName) {
-            console.log(this.ruleForm.img)
+            console.log(this.ruleForm.img, '提交前')
             this.$refs[formName].validate(valid => {
                 if (valid) {
                     let params = this.ruleForm
-                    params.img = params.img.map(item => {
-                        let str = item.replace('http://127.0.0.1:8080', '')
-                        return str
-                    })
+                    console.log(process.env.NODE_ENV)
+                    if (process.env.NODE_ENV === 'production') {
+                        params.img = params.img.map(item => {
+                            let str = item.replace('http://127.0.0.1:8080', '')
+                            return str
+                        })
+                    }
                     params.img = params.img.join(',')
                     add(params).then(res => {
                         if (res.code === '200') {
@@ -534,6 +544,7 @@ export default {
                             this.imgUrl = []
                             this.ruleForm.img = []
                             this.labDialog = false
+                            console.log(this.ruleForm, '提交后')
                         } else {
                             this.$message.error(res.message)
                         }
@@ -577,6 +588,15 @@ export default {
     &-list {
         width: 100%;
         height: 100%;
+    }
+}
+</style>
+<style lang="less">
+.tableClassStyle {
+    .cell {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 }
 </style>

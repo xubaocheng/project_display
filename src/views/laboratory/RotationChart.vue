@@ -83,7 +83,8 @@ export default {
                 {
                     title: '测试',
                     abstracts: '测试',
-                    img: require('../../assets/img/0.png')
+                    // img: require('../../assets/img/0.png')
+                    img: ''
                 }
             ],
             interval: 2000,
@@ -93,6 +94,7 @@ export default {
     },
     created() {
         this.fullHeight = window.screen.height + 'px'
+        console.log(this.fullHeight)
     },
     mounted() {
         // this.getFullCreeen()
@@ -223,6 +225,7 @@ export default {
                 bottom: 111px;
                 left: 0;
                 width: 100%;
+                text-indent: 2em;
                 line-height: 40px;
                 font-size: 30px;
                 font-weight: bold;
